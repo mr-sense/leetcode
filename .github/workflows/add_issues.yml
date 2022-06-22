@@ -12,7 +12,13 @@ on:
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
-  
+    inputs:
+      url:
+        description: 'leetcode url'     
+        required: true
+        default: 'warning'
+      content:
+        description: 'Test scenario tags'  
 env:
   USER_NAME: ${{ secrets.USER_NAME }}
   USER_EMAIL: ${{ secrets.USER_EMAIL }}
