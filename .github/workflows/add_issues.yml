@@ -22,6 +22,8 @@ on:
 env:
   USER_NAME: ${{ secrets.USER_NAME }}
   USER_EMAIL: ${{ secrets.USER_EMAIL }}
+  URL: ${{ github.event.inputs.url }}
+  CONTENT: ${{ github.event.inputs.content }}
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -46,3 +48,6 @@ jobs:
           ls
           date
           echo ${{ env.USER_NAME }}
+          echo '${{ env.USER_NAME }}'
+          echo ${{ env.URL }}
+          echo '${{ env.URL }}'
