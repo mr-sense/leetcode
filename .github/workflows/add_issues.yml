@@ -39,4 +39,4 @@ jobs:
           pwd
           ls
           date
-          echo { USER_NAME }
+          echo ${{ env.USER_NAME }}
