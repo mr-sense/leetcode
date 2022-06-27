@@ -45,10 +45,10 @@ jobs:
       - name: Run a multi-line script
         run: |
           pwd
-          date
-          mkdir '${{ env.TITLE }}'
-          echo '${{ env.CONTENT }}' > '${{ env.TITLE }}'/readme.md
           git config --global user.email ${{ env.USER_EMAIL }}
           git config --global user.name ${{ env.USER_NAME }}
+          git init
+          mkdir '${{ env.TITLE }}'
+          echo '${{ env.CONTENT }}' > '${{ env.TITLE }}'/readme.md
           git add '${{ env.TITLE }}'/readme.md
           git commit -m ${{ env.URL }}
