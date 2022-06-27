@@ -13,15 +13,19 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
     inputs:
-      url:
-        description: 'leetcode url'     
+      title:
+        description: 'title'     
         required: true
-        default: 'warning'
+      url:
+        description: 'url'     
+        required: true
       content:
-        description: 'Test scenario tags'  
+        description: 'content'  
+        required: true
 env:
   USER_NAME: ${{ secrets.USER_NAME }}
   USER_EMAIL: ${{ secrets.USER_EMAIL }}
+  TITLE: ${{ github.event.inputs.title }}
   URL: ${{ github.event.inputs.url }}
   CONTENT: ${{ github.event.inputs.content }}
 
@@ -47,7 +51,6 @@ jobs:
           pwd
           ls
           date
-          echo ${{ env.USER_NAME }}
-          echo '${{ env.USER_NAME }}'
-          echo ${{ env.URL }}
-          echo '${{ env.URL }}'
+          mkdir '${{ env.TITLE }}'
+          echo '${{ env.CONTENT }}' > '${{ env.TITLE }}'/readme.md
+          tree '${{ env.TITLE }}'
