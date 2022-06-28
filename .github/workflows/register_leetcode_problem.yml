@@ -63,6 +63,7 @@ jobs:
           cat '${{ env.TITLE }}'/readme.md
           git add '${{ env.TITLE }}'/readme.md
           git commit -m ${{ env.URL }}
+          git push origin master
 
       # init
       - name: remove project
