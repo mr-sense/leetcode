@@ -40,6 +40,7 @@ jobs:
       - name: Register Leetcode Problem
         run: |
           pwd
+          ls -al
           tree
           git config --global user.email ${{ env.USER_EMAIL }}
           git config --global user.name ${{ env.USER_NAME }}
@@ -47,6 +48,7 @@ jobs:
           echo '${{ env.CONTENT }}' > '${{ env.TITLE }}'/readme.md
           touch '${{ env.TITLE }}'/readme.md
           pwd
+          ls -al
           tree
           git add '${{ env.TITLE }}'/readme.md
           git commit -m ${{ env.URL }}
