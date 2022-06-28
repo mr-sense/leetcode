@@ -55,7 +55,7 @@ jobs:
         with:
           commit_message: Automated Change
           branch: main
-          file_pattern: *.md
+          file_pattern: '*.md'
           tagging_message: ${{ env.URL }}
           push_options: '--force'
 
