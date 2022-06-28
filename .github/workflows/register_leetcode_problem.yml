@@ -62,4 +62,5 @@ jobs:
           file_pattern: '*.md'
           tagging_message: ${{ env.URL }}
           push_options: '--force'
-
+          commit_user_name: ${{ env.USER_NAME }} 
+          commit_user_email: ${{ env.USER_EMAIL }}
