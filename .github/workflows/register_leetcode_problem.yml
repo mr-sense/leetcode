@@ -39,10 +39,14 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Register Leetcode Problem
         run: |
+          pwd
+          tree
           git config --global user.email ${{ env.USER_EMAIL }}
           git config --global user.name ${{ env.USER_NAME }}
-          pwd
           mkdir '${{ env.TITLE }}'
           echo '${{ env.CONTENT }}' > '${{ env.TITLE }}'/readme.md
+          touch '${{ env.TITLE }}'/readme.md
+          pwd
+          tree
           git add '${{ env.TITLE }}'/readme.md
           git commit -m ${{ env.URL }}
