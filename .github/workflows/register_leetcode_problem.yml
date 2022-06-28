@@ -34,16 +34,26 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
+      # - uses: actions/checkout@v2
 
+      # set global variable
+      - name: setup var
+      - run: |
+          git config --global user.email ${{ env.USER_EMAIL }}
+          git config --global user.name ${{ env.USER_NAME }} 
+          
+      # checkout
+      - name: clone project
+        run: |
+          git clone https://github.com/mr-sense/leetcode.git
+        
       # Runs a set of commands using the runners shell
       - name: Register Leetcode Problem
         run: |
+          cd leetcode
           pwd
           ls -al
           tree
-          git config --global user.email ${{ env.USER_EMAIL }}
-          git config --global user.name ${{ env.USER_NAME }}
           mkdir '${{ env.TITLE }}'
           echo '${{ env.CONTENT }}' > '${{ env.TITLE }}'/readme.md
           touch '${{ env.TITLE }}'/readme.md
@@ -52,3 +62,8 @@ jobs:
           tree
           git add '${{ env.TITLE }}'/readme.md
           git commit -m ${{ env.URL }}
+
+      # init
+      - name: remove project
+        run: |
+          rm -rf leetcode
