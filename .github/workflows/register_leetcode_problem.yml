@@ -34,23 +34,12 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      # - uses: actions/checkout@v2
-
-      # set global variable
-      - name: setup var
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.head_ref }}
+      
+      - name: create new file
         run: |
-          git config --global user.email ${{ env.USER_EMAIL }}
-          git config --global user.name ${{ env.USER_NAME }} 
-          
-      # checkout
-      - name: clone project
-        run: |
-          git clone https://github.com/mr-sense/leetcode.git
-        
-      # Runs a set of commands using the runners shell
-      - name: Register Leetcode Problem
-        run: |
-          cd leetcode
           pwd
           ls -al
           tree
@@ -61,11 +50,12 @@ jobs:
           ls -al
           tree
           cat '${{ env.TITLE }}'/readme.md
-          git add '${{ env.TITLE }}'/readme.md
-          git commit -m ${{ env.URL }}
-          git push origin master
 
-      # init
-      - name: remove project
-        run: |
-          rm -rf leetcode
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Automated Change
+          branch: main
+          file_pattern: *.md
+          tagging_message: ${{ env.URL }}
+          push_options: '--force'
+
