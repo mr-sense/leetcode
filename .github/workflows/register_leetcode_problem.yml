@@ -38,7 +38,7 @@ jobs:
 
       # set global variable
       - name: setup var
-      - run: |
+        run: |
           git config --global user.email ${{ env.USER_EMAIL }}
           git config --global user.name ${{ env.USER_NAME }} 
           
