@@ -54,13 +54,7 @@ jobs:
           ls -al
           tree
           cat '${{ env.TITLE }}'/readme.md
-
-      - uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: Automated Change
-          branch: main
-          file_pattern: '*.md'
-          tagging_message: ${{ env.URL }}
-          push_options: '--force'
-          commit_user_name: ${{ env.USER_NAME }} 
-          commit_user_email: ${{ env.USER_EMAIL }}
+          git config --global user.email ${{ env.USER_EMAIL }}
+          git config --global user.name ${{ env.USER_NAME }} 
+          git add '${{ env.TITLE }}'/readme.md
+          git commit -m ${{ env.URL }}
