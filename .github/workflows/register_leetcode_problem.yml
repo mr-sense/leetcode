@@ -58,6 +58,9 @@ jobs:
           cat '${{ env.TITLE }}'/readme.md
           git config --global user.email ${{ env.USER_EMAIL }}
           git config --global user.name ${{ env.USER_NAME }} 
-          git add '${{ env.TITLE }}'/readme.md
-          git commit -m ${{ env.URL }}
-          git push origin ${GITHUB_REF#refs/heads/}
+
+      - uses: EndBug/add-and-commit@v9
+        with:
+          message: Show GitHub Actions logo
+          committer_name: GitHub Actions
+          committer_email: actions@github.com
