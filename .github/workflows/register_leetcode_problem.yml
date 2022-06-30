@@ -61,6 +61,7 @@ jobs:
 
       - uses: EndBug/add-and-commit@v9
         with:
-          message: Show GitHub Actions logo
-          committer_name: GitHub Actions
-          committer_email: actions@github.com
+          message: ${{ env.URL }}
+          committer_name: ${{ secrets.USER_NAME }}
+          committer_email: ${{ secrets.USER_EMAIL }}
+          add: '${{ env.TITLE }}'/readme.md
