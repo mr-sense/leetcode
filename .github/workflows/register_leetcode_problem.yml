@@ -58,3 +58,4 @@ jobs:
           git config --global user.name ${{ env.USER_NAME }} 
           git add '${{ env.TITLE }}'/readme.md
           git commit -m ${{ env.URL }}
+          git push origin main
