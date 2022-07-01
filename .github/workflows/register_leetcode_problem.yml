@@ -39,10 +39,6 @@ jobs:
           fetch-depth: 0
           token: ${{ secrets.USER_TOKEN }}
           ref: ${{ github.head_ref }}
-
-      - name: some_name
-        run: |
-          git status 
            
       - name: create new file
         run: |
