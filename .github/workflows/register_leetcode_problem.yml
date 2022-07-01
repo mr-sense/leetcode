@@ -38,6 +38,7 @@ jobs:
         with:
           fetch-depth: 0
           token: ${{ secrets.USER_TOKEN }}
+          ref: ${{ github.head_ref }}
 
       - run: git init
 
@@ -64,9 +65,3 @@ jobs:
         with:
           commit_message: Apply php-cs-fixer changes
           push_options: --force
-
-      - uses: EndBug/add-and-commit@v9
-        with:
-          message: ${{ env.URL }}
-          committer_name: ${{ secrets.USER_NAME }}
-          committer_email: ${{ secrets.USER_EMAIL }}
