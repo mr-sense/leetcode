@@ -40,8 +40,6 @@ jobs:
           token: ${{ secrets.USER_TOKEN }}
           ref: ${{ github.head_ref }}
 
-      - run: git init
-
       - name: some_name
         run: |
           git status 
