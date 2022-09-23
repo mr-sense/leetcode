@@ -54,9 +54,12 @@ jobs:
           cat '${{ env.TITLE }}'/readme.md
           git config --global user.email ${{ env.USER_EMAIL }}
           git config --global user.name ${{ env.USER_NAME }} 
-
-      - uses: EndBug/add-and-commit@v9
-        with:
-          message: ${{ env.URL }}
-          committer_name: ${{ secrets.USER_NAME }}
-          committer_email: ${{ secrets.USER_EMAIL }}
+          
+      - name: Add file & Commit & Push
+        run: |
+          git config --global user.email ${{ env.USER_EMAIL }}
+          git config --global user.name ${{ env.USER_NAME }} 
+          git config --global -l
+          touch '${{ env.TITLE }}'/readme.md
+          git commit -m '${{ env.URL }}'
+          git push origin ${{ github.head_ref }}
